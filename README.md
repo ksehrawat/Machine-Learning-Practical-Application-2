@@ -304,3 +304,21 @@ plt.ylabel('Price ($)')
 plt.xticks(rotation=45)
 ```
 ![Box Plot](https://github.com/user-attachments/assets/5af54fdf-25da-428b-9f67-5b1c1cb70a55)
+
+```python
+plt.figure(figsize=(15, 20))
+plt.subplot(4, 1, 2)
+
+# Create the scatter plot and store the result
+scatter = sns.scatterplot(data=filtered_df, x='Odometer', y='Price', hue='Year', palette='viridis', alpha=0.6, edgecolor=None)
+
+plt.title('Price vs Odometer with Year Segmentation')
+plt.xlabel('Odometer (miles)')
+plt.ylabel('Price ($)')
+plt.yscale('log')  # Log scale for better readability
+
+# Create the colorbar explicitly, linking it to the scatter plot
+plt.colorbar(scatter.collections[0], label='Year')
+```
+![Scatter Plot](https://github.com/user-attachments/assets/cc7da793-c0ee-4957-91e3-60b60120cd0e)
+
