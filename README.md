@@ -53,3 +53,14 @@ print(vehicles_df.info())
  16  paint_color   296677 non-null  object 
  17  state         426880 non-null  object 
 
+# Print the data frame first 5 rows in a structured format
+
+print(vehicles_df.head().to_markdown(index=False, numalign="left", stralign="left"))
+
+| id         | region                 | price   | year   | manufacturer   | model   | condition   | cylinders   | fuel   | odometer   | title_status   | transmission   | VIN   | drive   | size   | type   | paint_color   | state   |
+|:-----------|:-----------------------|:--------|:-------|:---------------|:--------|:------------|:------------|:-------|:-----------|:---------------|:---------------|:------|:--------|:-------|:-------|:--------------|:--------|
+| 7222695916 | prescott               | 6000    | nan    | nan            | nan     | nan         | nan         | nan    | nan        | nan            | nan            | nan   | nan     | nan    | nan    | nan           | az      |
+| 7218891961 | fayetteville           | 11900   | nan    | nan            | nan     | nan         | nan         | nan    | nan        | nan            | nan            | nan   | nan     | nan    | nan    | nan           | ar      |
+| 7221797935 | florida keys           | 21000   | nan    | nan            | nan     | nan         | nan         | nan    | nan        | nan            | nan            | nan   | nan     | nan    | nan    | nan           | fl      |
+| 7222270760 | worcester / central MA | 1500    | nan    | nan            | nan     | nan         | nan         | nan    | nan        | nan            | nan            | nan   | nan     | nan    | nan    | nan           | ma      |
+| 7210384030 | greensboro             | 4900    | nan    | nan            | nan     | nan         | nan         | nan    | nan        | nan            | nan            | nan   | nan     | nan    | nan    | nan           | nc      |
