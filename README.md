@@ -3,7 +3,7 @@ The main aim of  the project is to predict the price of used cars based on vario
 
 # Data Information
 
-* Data Folder: **Data** - This folder is created to store the data file (vehicles.csv). This Folder also has another file filtered_vehicles.csv which is the copy of the clean data. Folrder is saved as a Zip file as we cannot upload the whole folder due to the Size Limit of 25MB
+* Data Folder: **Data** - This folder is created to store the data file (vehicles.csv). This Folder also has another file filtered_vehicles.csv which is the copy of the clean data. Folder is saved as a Zip file as we cannot upload the whole folder due to the Size Limit of 25MB
 
 * Data Set - Data set used in the project is in the **vehicles.csv** file 
   
