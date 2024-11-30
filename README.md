@@ -7,7 +7,7 @@ The main aim of  the project is to predict the price of used cars based on vario
 
 * Data Set - Data set used in the project is in the **vehicles.csv** file 
   
-* Code File - Python Code is stored in the **Module_5_Activity1.ipynb** file
+* Code File - Python Code is stored in the **Machine_Learning_Practical_Application_2.ipynb** file
 
 # Create DataFrame in Python for the Data Set
 
