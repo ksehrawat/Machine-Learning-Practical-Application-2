@@ -529,4 +529,36 @@ results
           4380.52764856,     -0.        ,  -1654.54883621,      0.        ,
          -1051.85233698])}
 ```
+Ridge and Lasso Regression Results:
 
+Ridge Regression:
+
+Best Hyperparameters: {'regressor__alpha': 10}
+
+Cross-Validation RMSE: 6685.45
+
+Test RMSE: 6647.12
+
+Test R²: 0.7143
+
+Lasso Regression:
+
+Best Hyperparameters: {'regressor__alpha': 10}
+
+Cross-Validation RMSE: 6679.81
+
+Test RMSE: 6639.48
+
+Test R²: 0.7150
+
+Observations:
+
+Both Ridge and Lasso performed similarly in terms of RMSE and R², with Lasso slightly outperforming Ridge.
+
+Regularization did not drastically improve performance, indicating that the baseline linear regression already captured the main trends effectively.
+
+Coefficients Analysis:
+
+Ridge Coefficients: Continuous coefficients for all features.
+
+Lasso Coefficients: Sparse coefficients (some are zero), highlighting features most strongly associated with price.
