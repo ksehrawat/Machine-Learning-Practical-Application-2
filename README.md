@@ -11,3 +11,22 @@ The main aim of  the project is to predict the price of used cars based on vario
 
 # Create DataFrame in Python for the Data Set
 
+```python
+# Python Code to  read the vechicles.csv stored in the Data Folder using various Pyhon Libraries
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+
+# Load the dataset
+file_path = 'Data/vehicles.csv'
+vehicles_df = pd.read_csv(file_path)
+
+
