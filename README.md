@@ -451,6 +451,82 @@ ridge_best_score = -ridge_search.best_score_
 
 lasso_best_params = lasso_search.best_params_
 lasso_best_score = -lasso_search.best_score_
-```
 
+# Evaluate on the test set
+ridge_best_model = ridge_search.best_estimator_
+lasso_best_model = lasso_search.best_estimator_
+
+y_pred_ridge = ridge_best_model.predict(X_test)
+y_pred_lasso = lasso_best_model.predict(X_test)
+
+ridge_test_rmse = np.sqrt(mean_squared_error(y_test, y_pred_ridge))
+lasso_test_rmse = np.sqrt(mean_squared_error(y_test, y_pred_lasso))
+
+ridge_test_r2 = r2_score(y_test, y_pred_ridge)
+lasso_test_r2 = r2_score(y_test, y_pred_lasso)
+
+# Extract coefficients for interpretation
+ridge_coefficients = ridge_best_model.named_steps['regressor'].coef_
+lasso_coefficients = lasso_best_model.named_steps['regressor'].coef_
+
+# Summarize results
+results = {
+    "Ridge Best Params": ridge_best_params,
+    "Ridge CV RMSE": ridge_best_score,
+    "Ridge Test RMSE": ridge_test_rmse,
+    "Ridge Test R2": ridge_test_r2,
+    "Lasso Best Params": lasso_best_params,
+    "Lasso CV RMSE": lasso_best_score,
+    "Lasso Test RMSE": lasso_test_rmse,
+    "Lasso Test R2": lasso_test_r2,
+    "Ridge Coefficients": ridge_coefficients,
+    "Lasso Coefficients": lasso_coefficients
+}
+results
+
+{'Ridge Best Params': {'regressor__alpha': 10},
+ 'Ridge CV RMSE': 6716.615793850908,
+ 'Ridge Test RMSE': 6658.865951662125,
+ 'Ridge Test R2': 0.7137664264680321,
+ 'Lasso Best Params': {'regressor__alpha': 0.1},
+ 'Lasso CV RMSE': 6716.143445958366,
+ 'Lasso Test RMSE': 6658.899899425323,
+ 'Lasso Test R2': 0.7137635079487488,
+ 'Ridge Coefficients': array([ 5.45014685e+03, -3.58589912e+03,  1.07176346e+03,  4.43315766e+03,
+         1.32988544e+01,  3.64819384e+03,  2.11747784e+03, -2.52770100e+03,
+         3.20208505e+03, -8.68687776e+02, -3.42663114e+03, -1.72759734e+03,
+        -2.17801803e+03, -9.28533430e+03, -1.44976464e+03,  8.97400856e+02,
+        -3.85775511e+03, -1.90070158e+03, -5.32985712e+03,  1.76148441e+03,
+         4.71001335e+03,  1.14341837e+03, -6.22910986e+03,  3.65121497e+02,
+         5.65317296e+03,  1.88690917e+03, -4.12439722e+03,  3.68534796e+03,
+        -5.89867429e+02, -3.45300797e+03, -6.20811752e+03, -4.61253288e+03,
+        -4.63129622e+02,  1.04790131e+04, -1.02003939e+02,  4.75561649e+03,
+        -3.21743404e+03, -1.33240881e+03,  1.54563114e+04,  6.48773512e+02,
+        -4.71802705e+03,  1.67352457e+03,  8.95148616e+03, -3.90921231e+03,
+        -1.71136096e+03, -2.84099638e+03, -4.89916529e+02, -1.09112096e+03,
+         5.91197447e+02,  4.99923496e+02,  5.88440038e+02,  1.59673335e+03,
+         1.11909374e+03, -6.63304847e+03, -2.86742231e+03,  3.91040430e+03,
+         1.10452177e+03,  5.47123829e+03, -5.39495396e+03, -1.43777653e+03,
+         7.14320438e+03, -6.17030566e+02, -3.98340405e+03,  3.70070577e+03,
+         3.33439134e+03, -1.49671156e+03, -2.47032186e+03, -1.00630497e+03,
+        -2.06175872e+03]),
+ 'Lasso Coefficients': array([  5450.68520652,  -3586.70673894,   1556.60754729,   4954.85696955,
+             0.        ,   4135.15550428,   2604.76976185,  -2048.64945046,
+          3689.01060761,   -389.61017903,  -2943.72017299,  -1257.2580824 ,
+        -19082.19808472,  -8967.84124956,   -972.90596823,   1374.1017361 ,
+         -3498.97567506,  -1420.5027764 ,  -4850.56399949,   2252.867262  ,
+          5180.05806964,   1619.87913285,  -5747.41757354,      0.        ,
+          6145.86110855,   2366.61987994,  -3658.05490612,   4170.96750136,
+           -60.56784227,  -2987.60616446,  -5749.51807134,  -4138.49902573,
+             0.        ,  11079.9061332 ,    371.56963617,   5274.94397876,
+         -2732.7019218 ,   -845.3266787 ,  16370.73224254,   1126.30810492,
+         -4245.92681556,   2148.72695198,  10661.20815931,  -2371.1073195 ,
+            -0.        ,  -1134.06801551,   1220.14575027,  -1586.51538631,
+            96.3244759 ,     -0.        ,    681.98083132,   1778.49086363,
+          1303.56415822,  -6440.89758409,  -2682.48287979,   4177.94618847,
+          1291.80504781,   5661.98544422,  -5213.41361788,  -1253.3944535 ,
+          7335.05996955,   -429.43325653,  -3801.27657522,   4715.11976634,
+          4380.52764856,     -0.        ,  -1654.54883621,      0.        ,
+         -1051.85233698])}
+```
 
