@@ -382,3 +382,36 @@ linear_model.fit(X_train, y_train)
 ```
 ![Screenshot 2024-11-30 at 11 31 37 AM](https://github.com/user-attachments/assets/5cf7af9e-9a60-4749-a278-086058054d6e)
 
+```python
+# Predict and evaluate the base model
+y_pred_train = linear_model.predict(X_train)
+y_pred_test = linear_model.predict(X_test)
+rmse_train = np.sqrt(mean_squared_error(y_train, y_pred_train))
+rmse_test = np.sqrt(mean_squared_error(y_test, y_pred_test))
+r2_train = r2_score(y_train, y_pred_train)
+r2_test = r2_score(y_test, y_pred_test)
+
+# Display the results
+{
+    "Linear Regression RMSE (Train)": rmse_train,
+    "Linear Regression RMSE (Test)": rmse_test,
+    "Linear Regression R2 (Train)": r2_train,
+    "Linear Regression R2 (Test)": r2_test
+}
+```
+
+Linear Regression Results:
+
+RMSE (Train): 6713.95
+
+RMSE (Test): 6659.04
+
+R² (Train): 0.7125
+
+R² (Test): 0.7138
+
+Observations:
+
+The model explains approximately 71% of the variance in vehicle prices.
+
+The RMSE values for train and test sets are similar, indicating no significant overfitting.
