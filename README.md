@@ -562,3 +562,29 @@ Coefficients Analysis:
 Ridge Coefficients: Continuous coefficients for all features.
 
 Lasso Coefficients: Sparse coefficients (some are zero), highlighting features most strongly associated with price.
+
+```python
+# Extract feature names from the preprocessor pipeline
+feature_names = (
+    preprocessor.named_transformers_['num'].get_feature_names_out(['Year', 'Odometer']).tolist() +
+    preprocessor.named_transformers_['cat'].get_feature_names_out(
+        ['Manufacturer', 'Fuel', 'Transmission', 'Type', 'Title Status']
+    ).tolist()
+)
+
+# Combine feature names with coefficients for Ridge and Lasso
+ridge_coefficients_mapped = dict(zip(feature_names, ridge_coefficients))
+lasso_coefficients_mapped = dict(zip(feature_names, lasso_coefficients))
+
+
+# Convert to DataFrames for better interpretation
+ridge_coefficients_df = pd.DataFrame(list(ridge_coefficients_mapped.items()), columns=['Feature', 'Coefficient']).sort_values(by='Coefficient', ascending=False)
+lasso_coefficients_df = pd.DataFrame(list(lasso_coefficients_mapped.items()), columns=['Feature', 'Coefficient']).sort_values(by='Coefficient', ascending=False)
+
+from IPython.display import display
+
+display(ridge_coefficients_df) # This will display the ridge_coefficients_df DataFrame
+display(lasso_coefficients_df) # This will display the lasso_coefficients_df DataFrame
+
+ridge_coefficients_df.head(), lasso_coefficients_df.head() # These lines will display the first 5 rows of each DataFrame
+```
