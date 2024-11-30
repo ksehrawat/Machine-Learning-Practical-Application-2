@@ -322,3 +322,33 @@ plt.colorbar(scatter.collections[0], label='Year')
 ```
 ![Scatter Plot](https://github.com/user-attachments/assets/cc7da793-c0ee-4957-91e3-60b60120cd0e)
 
+```python
+# 4. Fuel Type Distribution (Pie Chart)
+
+plt.figure(figsize=(15, 20))
+plt.subplot(4, 1, 4)
+fuel_counts = filtered_df['Fuel'].value_counts()
+plt.pie(fuel_counts, labels=fuel_counts.index, startangle=140)
+plt.title('Fuel Type Distribution')
+
+plt.tight_layout()
+plt.show()
+```
+![PieChart](https://github.com/user-attachments/assets/3a782e2c-d5b9-4b8a-82a5-4385e9ebafff)
+
+```python
+plt.figure(figsize=(12, 8))
+
+# Select only numerical columns for correlation calculation
+numerical_data = filtered_df.select_dtypes(include=['number'])
+
+sns.heatmap(numerical_data.corr(), annot=True, cmap='coolwarm', fmt=".2f")
+plt.title('Correlation Heatmap of Numerical Features')
+plt.show()
+```
+![Correlation](https://github.com/user-attachments/assets/a6fa805b-5dec-4379-bb43-915d310d9dfc)
+
+Observations:
+Price Distribution: Indicates variability and potential outliers.
+Correlations: Preliminary analysis shows a relationship between vehicle price, year, and odometer readings.
+
