@@ -588,10 +588,8 @@ display(lasso_coefficients_df) # This will display the lasso_coefficients_df Dat
 
 ridge_coefficients_df.head(), lasso_coefficients_df.head() # These lines will display the first 5 rows of each DataFrame
 ```
-Introduction
-This report summarizes the analysis of used car data to identify key factors influencing vehicle prices. The goal is to provide actionable insights for used car dealerships to optimize their inventory and pricing strategies.
 
-Key Findings
+# Key Findings
 
 1. Price Drivers: Our analysis reveals the most significant factors affecting used car prices are:
 * Year: Newer cars generally command higher prices.
@@ -606,11 +604,19 @@ Squared Error (RMSE) on the test set of approximately $6,639. This suggests that
 4. Top Performing Models (based on coefficient analysis):
 The provided coefficient analysis gives a deeper insight into feature importance. The specific makes and models which most strongly influence price will vary slightly based on the model employed (Ridge vs. Lasso). Dealers can cross-reference these results with their current inventory to identify vehicles with high potential and those requiring more competitive pricing.
 
-# Recommendations for Dealers:
-* Inventory Optimization: Prioritize vehicles with desirable features based on the identified price drivers (year, mileage, make, model, type, and fuel type).
-* Targeted Pricing: Adjust prices strategically according to the model's predictions.
-* Market Analysis: Continuously monitor market trends and adjust pricing as the factors that influence used car prices change over time.
-* Specific Model Focus: Pay close attention to top-performing models (which you'll find in the provided coefficient output).
+# Recommendations for Dealers
+
+Year: Positive coefficient in both Ridge and Lasso models, indicating newer vehicles generally have higher prices.
+
+Odometer:Negative coefficient, showing that vehicles with higher mileage are valued lower.
+
+Manufacturer: Specific brands may have strong positive or negative impacts, reflecting consumer preferences and brand reputation.
+
+Fuel: Features related to fuel type may highlight preferences for fuel-efficient or alternative energy vehicles.
+
+Transmission: Automatic or other transmission types can vary in preference depending on the consumer market.
+
+Title Status: Clean titles are positively associated with price, while salvage titles negatively impact valuation.
   
 Next Steps
 We recommend further analysis to incorporate additional relevant factors, including vehicle features, location data and exterior condition. This could lead to even more precise pricing recommendations.
