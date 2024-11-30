@@ -353,3 +353,7 @@ Price Distribution: Indicates variability and potential outliers.
 
 Correlations: Preliminary analysis shows a relationship between vehicle price, year, and odometer readings.
 
+```
+# Data Modeling
+
+```python
