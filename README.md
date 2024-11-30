@@ -415,3 +415,42 @@ Observations:
 The model explains approximately 71% of the variance in vehicle prices.
 
 The RMSE values for train and test sets are similar, indicating no significant overfitting.
+
+```python
+# Define Ridge and Lasso models with pipelines
+ridge_model = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('regressor', Ridge())
+])
+
+lasso_model = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('regressor', Lasso())
+])
+
+# Hyperparameter grid for Ridge and Lasso
+param_grid_ridge = {'regressor__alpha': [0.1, 1, 10, 100, 1000]}
+param_grid_lasso = {'regressor__alpha': [0.1, 1, 10, 100, 1000]}
+
+# Grid Search CV for Ridge
+ridge_search = GridSearchCV(ridge_model, param_grid_ridge, cv=5, scoring='neg_root_mean_squared_error')
+ridge_search.fit(X_train, y_train)
+```
+![Screenshot 2024-11-30 at 11 36 04 AM](https://github.com/user-attachments/assets/c549e6f3-ca4f-4b99-93b4-546dcbd4a24e)
+
+```python
+# Grid Search CV for Lasso
+lasso_search = GridSearchCV(lasso_model, param_grid_lasso, cv=5, scoring='neg_root_mean_squared_error')
+lasso_search.fit(X_train, y_train)
+```
+![Screenshot 2024-11-30 at 11 37 19 AM](https://github.com/user-attachments/assets/2b2bfafc-7171-464b-8d48-d663fff12d5b)
+```python
+# Best hyperparameters and scores
+ridge_best_params = ridge_search.best_params_
+ridge_best_score = -ridge_search.best_score_
+
+lasso_best_params = lasso_search.best_params_
+lasso_best_score = -lasso_search.best_score_
+```
+
+
