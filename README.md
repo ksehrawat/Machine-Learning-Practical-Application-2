@@ -64,3 +64,4 @@ print(vehicles_df.head().to_markdown(index=False, numalign="left", stralign="lef
 | 7221797935 | florida keys           | 21000   | nan    | nan            | nan     | nan         | nan         | nan    | nan        | nan            | nan            | nan   | nan     | nan    | nan    | nan           | fl      |
 | 7222270760 | worcester / central MA | 1500    | nan    | nan            | nan     | nan         | nan         | nan    | nan        | nan            | nan            | nan   | nan     | nan    | nan    | nan           | ma      |
 | 7210384030 | greensboro             | 4900    | nan    | nan            | nan     | nan         | nan         | nan    | nan        | nan            | nan            | nan   | nan     | nan    | nan    | nan           | nc      |
+```
