@@ -286,3 +286,21 @@ print(filtered_df.columns)
 
 filtered_file_path = 'Data/filtered_vehicles.csv'
 filtered_df.to_csv(filtered_file_path, index=False)
+```
+
+# Data Visualization
+```python
+
+plt.figure(figsize=(15, 20))
+
+# 1. Price Distribution by Manufacturer
+plt.subplot(4, 1, 1)
+top_manufacturers = filtered_df['Manufacturer'].value_counts().index[:10]
+sns.boxplot(data=filtered_df[filtered_df['Manufacturer'].isin(top_manufacturers)],
+            x='Manufacturer', y='Price')
+plt.title('Price Distribution by Manufacturer (Top 10)')
+plt.xlabel('Manufacturer')
+plt.ylabel('Price ($)')
+plt.xticks(rotation=45)
+```
+![Box Plot](https://github.com/user-attachments/assets/5af54fdf-25da-428b-9f67-5b1c1cb70a55)
