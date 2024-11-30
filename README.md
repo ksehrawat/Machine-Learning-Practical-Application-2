@@ -353,7 +353,32 @@ Price Distribution: Indicates variability and potential outliers.
 
 Correlations: Preliminary analysis shows a relationship between vehicle price, year, and odometer readings.
 
-```
 # Data Modeling
 
 ```python
+
+# Defining the dependent and independent variables
+X = filtered_df[['Year', 'Manufacturer', 'Fuel', 'Odometer', 'Transmission', 'Type', 'Title Status']]
+y = filtered_df['Price']
+
+# Splitting data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Preprocessing: OneHotEncoding for categorical variables, StandardScaler for numerical variables
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', StandardScaler(), ['Year', 'Odometer']),
+        ('cat', OneHotEncoder(handle_unknown='ignore'), ['Manufacturer', 'Fuel', 'Transmission', 'Type', 'Title Status'])
+    ])
+
+# Base model: Linear Regression
+linear_model = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('regressor', LinearRegression())
+])
+
+# Train the linear regression model
+linear_model.fit(X_train, y_train)
+```
+![Screenshot 2024-11-30 at 11 31 37 AM](https://github.com/user-attachments/assets/5cf7af9e-9a60-4749-a278-086058054d6e)
+
